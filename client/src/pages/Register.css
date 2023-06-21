@@ -1,0 +1,22 @@
+.password-input-container {
+    position: relative;
+  }
+  
+  .input-icon {
+    position: relative;
+  }
+  
+  .input-icon input {
+    padding-right: 30px; /* Add some space on the right for the icon */
+  }
+  
+  .input-icon .password-toggle-button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
