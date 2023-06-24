@@ -1,0 +1,110 @@
+button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    background-color: black;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+
+}
+
+.searchBox {
+    max-width: 420px;
+    flex: 1 auto;
+    margin: 0 1rem;
+}
+
+form > input {
+    outline: 0;
+    background-color: #f9fafa;
+    padding: 0.6rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: 1px solid #b5bdc4;
+    width: 460px;
+}
+
+input:focus {
+    background-color: #fff;
+    box-shadow: 1px 1px #3b49df;
+}
+
+.logo_input {
+    align-items: center;
+    gap: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-pic {
+    height: 2rem;
+    width: 2rem;
+    margin: 0 1rem;
+}
+
+span>img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dropdown-menu-close {
+    display: none;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 56px;
+    right: 4rem;
+    left: auto;
+    background: #fff;
+    border: 2px solid #08090a;
+    box-shadow: 4px 4px 0 #08090a;
+    border-radius: 5px;
+    min-width: 250px;
+    z-index: 4;
+}
+
+.list ul > li {
+    padding: 0.5rem;
+    cursor: pointer;
+    line-height: 1.6;
+    transition: all 0.2s;
+}
+
+.list > li:first-child {
+    border-bottom: 1px solid #d2d6db;
+    padding: 0;
+}
+
+.list li:last-child {
+    border-top: 1px solid #d2d6db;
+}
+
+.list li:hover {
+    background-color: rgba(8, 9, 10, 0.05);
+    border-radius: 5px;
+}
+.list li,
+.link{
+    list-style: none;
+    padding: 5px;
+}
+.link,
+.list li > a{
+    padding: 15px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+}
+.list{
+    flex-direction: column;
+    display: flex;
+    padding: 16px;
+    gap: 20px;
+    margin: 10px;
+}

@@ -1,0 +1,407 @@
+/* $lightGreen: #b9e7e7; */
+
+.app {
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+}
+
+.container {
+  padding: 0 70px;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.auth {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 1024px;
+  background-image: url("https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp");
+  background-size: cover;
+}
+
+.auth h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: rgb(0, 133, 138);
+  margin-bottom: 20px;
+}
+
+.auth form {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  width: 300px;
+  border-radius: 10px;
+  background: #e0e0e0;
+  box-shadow: 7px 7px 15px #5c5c5c, -7px -7px 15px #ffffff;
+}
+
+.auth form label {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.auth form input {
+  width: auto;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid gray;
+}
+
+.auth form button {
+  padding: 10px;
+  border: none;
+  background-color: teal;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.auth form p {
+  font-size: 12px;
+  color: red;
+  text-align: center;
+}
+
+.auth form span {
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 15px;
+  text-align: center;
+}
+
+.navbar .container {
+  padding: 10px 0px;
+  display: flex;
+  font-weight: 700;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo img {
+  width: 120px;
+}
+
+.container .links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.container .links h6 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.container .links span {
+  display: flex;
+  cursor: pointer;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+}
+
+.write {
+  background-color: #b9e7e7;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  border: 1px solid white;
+}
+
+.write:hover {
+  color: teal;
+  background-color: white;
+  border: 1px solid teal;
+}
+
+footer {
+  margin-top: 100px;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.social_icons{
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  font-size: 20px;
+}
+
+footer > img {
+  height: 30px;
+  border-radius: 5px;
+}
+
+.posts {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.posts>.post {
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 2px 3px 9px 1px #000;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 50px;
+}
+
+.post>.img {
+  flex: 2;
+  position: relative;
+}
+
+.post>.img img {
+  height: 100%;
+  width: 100%;
+  max-height: 390px;
+  object-fit: cover;
+}
+
+.content {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.content h1 {
+  font-size: 48px;
+  margin-bottom: 0px;
+}
+
+.content p {
+  font-size: 18px;
+}
+
+.content button {
+  width: max-content;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: rgb(139, 136, 136);
+  color: black;
+  font-weight: bold;
+}
+
+.content button:hover {
+  background-color: #b9e7e7;
+  color: white;
+}
+
+.single {
+  display: flex;
+  gap: 50px;
+}
+
+.single>.content {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.single>.content img {
+  padding-top: 70px;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.content .user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.content .user img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user span {
+  font-weight: bold;
+}
+
+.edit {
+  display: flex;
+  gap: 5px;
+}
+
+.edit img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.content h1 {
+  font-size: 42px;
+  color: #333;
+}
+
+.content p {
+  text-align: justify;
+  line-height: 40px;
+}
+
+.menu {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.menu h1 {
+  font-size: 20px;
+  color: #555;
+}
+
+.single .menu .post {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.post img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.post h2 {
+  color: #555;
+}
+
+.post button {
+  width: max-content;
+  padding: 7.5px 15px;
+  border: none;
+  cursor: pointer;
+  color: teal;
+  background-color: white;
+  border: 1px solid teal;
+}
+
+.post button:hover {
+  border: 1px solid white;
+  background-color: #b9e7e7;
+  color: black;
+}
+
+.add {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.add>.content {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.content input {
+  border-radius: 5px;
+  outline: none;
+  padding: 10px;
+  border: 1px solid lightgray;
+}
+
+.editorContainer {
+  height: 375px;
+  overflow: scroll;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+.editor {
+  height: 100%;
+  border: none;
+}
+
+.menu {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.item {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #555;
+}
+
+.item h1 {
+  font-size: 20px;
+}
+
+.file {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons :first-child {
+  cursor: pointer;
+  color: teal;
+  background-color: white;
+  border: 1px solid teal;
+  border-radius: 3px;
+  padding: 3px 5px;
+}
+
+.buttons :last-child {
+  cursor: pointer;
+  color: white;
+  background-color: teal;
+  border: 1px solid teal;
+  border-radius: 3px;
+  padding: 3px 5px;
+  margin-right: 25px;
+}
+
+.cat {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: teal;
+}

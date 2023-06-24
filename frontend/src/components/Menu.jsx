@@ -6,6 +6,8 @@ import React, { useEffect, useState } from 'react'
 const Menu = ({cat}) => {
   const [posts, setPosts] = useState([]);
 
+  // Other posts you may like component
+
   useEffect(() => {
     const fetchData = async () => {
       try {

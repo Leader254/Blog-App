@@ -1,0 +1,27 @@
+nav ul li h6 {
+  display: flex;
+  align-items: center;
+  color: #555;
+  font-size: 16px;
+  gap: 5px;
+}
+
+nav ul li h6:hover {
+  background-color: rgba(8, 9, 10, 0.05);
+  color: #1827ce;
+  border-radius: 5px;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.socials {
+  display: flex;
+  gap: 8px;
+}
+.link2{
+  text-decoration: none;
+}

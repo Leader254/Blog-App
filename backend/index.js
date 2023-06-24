@@ -5,8 +5,8 @@ import multer from 'multer'
 
 import cors from 'cors';
 import authRoutes from './routes2/authRoute.js';
+import postRoutes from './routes2/postRoute.js';
 // import userRoutes from './routes/users.js';
-// import postRoutes from './routes/posts.js';
 import cookieParser from 'cookie-parser';
 
 
@@ -40,7 +40,7 @@ app.use(cors({
 app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 // app.use('/api/users', userRoutes);
-// app.use('/api/posts', postRoutes);
+app.use("/posts", postRoutes);
 
 app.listen(config.port, () => {
   console.log(`Server running on ${config.url}`);

@@ -21,12 +21,32 @@ export const AuthContextProvider = ({ children }) => {
     setCurrentUser(null);
   };
 
-  // useEffect
+  // Clear session on window close
+  // useEffect(() => {
+  //   const handleBeforeUnload = () => {
+  //     localStorage.removeItem('user');
+  //   };
+  
+  //   const handleUnload = () => {
+  //     localStorage.removeItem('user');
+  //   };
+  
+  //   window.addEventListener('beforeunload', handleBeforeUnload);
+  //   window.addEventListener('unload', handleUnload);
+  
+  //   return () => {
+  //     window.removeEventListener('beforeunload', handleBeforeUnload);
+  //     window.removeEventListener('unload', handleUnload);
+  //   };
+  // }, []);
+  
+  
+  
+
+  // Update localStorage on currentUser change
   useEffect(() => {
     localStorage.setItem('user', JSON.stringify(currentUser));
   }, [currentUser]);
-
-  // console.log('currentUser:', currentUser); // Add this console.log statement
 
   return (
     <AuthContext.Provider value={{ currentUser, login, logout }}>
@@ -34,3 +54,4 @@ export const AuthContextProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+

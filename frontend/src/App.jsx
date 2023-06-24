@@ -3,7 +3,7 @@ import {
   RouterProvider,
   Outlet,
 } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Register from './pages/Register';
 import Login from './pages/Login';
@@ -12,14 +12,17 @@ import Single from './pages/Single';
 import Write from './pages/Write';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-// import LandingPage from "./components/LandingPage";
-import './styles.scss';
+import LeftSideBar from './components/LeftSideBar';
+import './styles.css'
 const Layout = () => {
   return (
     <>
-    {/* <LandingPage /> */}
+
     <Navbar />
+    <main>
+    <LeftSideBar />
     <Outlet />
+    </main>
     <Footer />
     </>
   )

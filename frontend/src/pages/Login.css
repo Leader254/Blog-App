@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    width: 1024px;
     background-image: url("https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp");
     background-size: cover;
   }
@@ -27,7 +28,8 @@
     font-weight: bold;
   }
   
-  .login-form input {
+  .login-form > input {
+    width: auto;
     outline: none;
     border-radius: 5px;
     padding: 10px;
