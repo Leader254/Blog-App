@@ -49,6 +49,7 @@
     border-radius: 5px;
     cursor: pointer;
     color: white;
+    width: auto;
   }
   
   .auth form p {

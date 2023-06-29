@@ -28,19 +28,5 @@
 --   FOREIGN KEY (uid) REFERENCES Users(id) ON DELETE CASCADE ON UPDATE CASCADE
 -- );
 
--- -- Table Three - Categories
--- CREATE TABLE Categories (
---   id INT PRIMARY KEY IDENTITY,
---   name VARCHAR(255) NOT NULL
--- );
-
--- -- Table Four - PostCategories (junction table)
--- CREATE TABLE PostCategories (
---   postId INT NOT NULL,
---   categoryId INT NOT NULL,
---   PRIMARY KEY (postId, categoryId),
---   FOREIGN KEY (postId) REFERENCES Posts(id) ON DELETE CASCADE ON UPDATE CASCADE,
---   FOREIGN KEY (categoryId) REFERENCES Categories(id) ON DELETE CASCADE ON UPDATE CASCADE
--- );
 
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 import axios from 'axios';
 import React, { useState, useContext } from 'react';
@@ -87,7 +88,7 @@ const Write = () => {
               required
               onChange={(e) => setCat(e.target.value)}
             />
-            <label htmlFor="tech">Technology</label>
+            <label htmlFor="technology">Technology</label>
           </div>
           <div className="cat">
             <input

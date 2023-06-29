@@ -23,7 +23,7 @@ const Menu = ({category}) => {
     fetchData();
   },[]);
   return (
-    <div className='menu'>
+    <div className='menu2'>
         <h1>Other posts you may like</h1>
         {posts.map((post) => (
             <div className="post" key={post.id}>

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
 import axios from 'axios';
 import LandingPage from './LandingPage';
@@ -9,24 +9,27 @@ const Home = () => {
   const { currentUser } = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
 
-  const category = useLocation().search;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/posts", {
-          headers: { "Authorization": `${currentUser.token}` }
+        let url = "http://localhost:4000/posts";
+
+        const response = await axios.get(url, {
+          headers: { Authorization: `${currentUser.token}` },
         });
+
         setPosts(response.data);
+        // console.log(response.data);
       } catch (error) {
         console.log(error);
       }
-    }
+    };
 
     if (currentUser) {
       fetchData();
     }
-  }, [category, currentUser]);
+  }, [ currentUser]);
 
   if (!currentUser) {
     return <LandingPage />;
@@ -39,7 +42,7 @@ const Home = () => {
           <div className="post" key={post.id}>
             <div className="img">
               <img src={post.img} alt="" className="postImg" />
-              <p style={{textDecoration: "underline", color: "blue", textUnderlineOffset: "2px"}}><em>Tags: {post.category}</em></p>
+              <p style={{textDecoration: "underline", color: "blue",fontSize: "20px", textUnderlineOffset: "2px"}}><em>Tags: {post.category}</em></p>
             </div>
             <div className="content">
               <Link to={`/post/${post.id}`} className='link'>
@@ -55,6 +58,6 @@ const Home = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Home;

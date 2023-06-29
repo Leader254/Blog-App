@@ -73,9 +73,10 @@
 }
 
 .single .post {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 
@@ -105,10 +106,16 @@
   background-color: #b9e7e7;
   color: black;
 }
-
+.menu{
+  margin-right: 20px;
+  flex: 2;
+}
 /* Media query for menu below 768px */
 @media (max-width: 768px) {
   .single {
+    border-radius: 5px;
+    border: 2px solid;
+    padding: 30px;
     flex-direction: column;
   }
 

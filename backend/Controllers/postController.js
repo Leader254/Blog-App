@@ -65,7 +65,7 @@ export const getPost = async (req, res) => {
 
     res.status(200).json(result.recordset[0]);
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return res
       .status(500)
       .json({ error: "An error occurred while retrieving the post" });
@@ -76,7 +76,7 @@ export const getPost = async (req, res) => {
 // Updating a post
 export const updatePost = async (req, res) => {
   const { id } = req.params;
-  const { title, description, category } = req.body;
+  const { title, description, img } = req.body;
 
   try {
     let pool = await sql.connect(config.sql);
@@ -85,9 +85,9 @@ export const updatePost = async (req, res) => {
       .input("id", sql.Int, id)
       .input("title", sql.VarChar, title)
       .input("description", sql.VarChar, description)
-      .input("category", sql.VarChar, category)
+      .input("img", sql.VarChar, img)
       .query(
-        "UPDATE Posts SET title = @title, description = @description, category = @category WHERE id = @id"
+        "UPDATE Posts SET title = @title, description = @description, img = @img WHERE id = @id"
       );
 
     if (result.rowsAffected[0] === 0) {

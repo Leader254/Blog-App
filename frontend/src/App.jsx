@@ -14,6 +14,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import LeftSideBar from './components/LeftSideBar';
 import './styles.css'
+import NotFound from "./pages/NotFound";
 const Layout = () => {
   return (
     <>
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 

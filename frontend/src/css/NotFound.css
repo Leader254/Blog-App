@@ -1,0 +1,29 @@
+.notfound{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.notfound-404{
+    font-size: 6rem;
+}
+h2{
+    font-size: 2rem;
+}
+
+p{
+    text-align: center;
+    font-size: 2rem;
+}
+a{
+
+}
+  @media only screen and (max-width: 767px) {
+    .notfound .notfound-404 {
+      height: 142px;
+    }
+    .notfound .notfound-404 h1 {
+      font-size: 112px;
+    }
+  }
+  

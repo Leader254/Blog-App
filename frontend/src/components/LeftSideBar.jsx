@@ -3,33 +3,33 @@ import { IoCarSportSharp } from "react-icons/io5"; // Cars
 import { MdScience } from "react-icons/md"; // Science
 import { GrTechnology } from "react-icons/gr"; // Technology
 import { BiCodeAlt, BiSolidPlanet, BiCameraMovie } from "react-icons/bi"; // Programming
-import { Link } from "react-router-dom";
 
 const LeftSidebar = () => {
   return (
     <>
       <aside className="leftBar">
-        <nav className="leftBar__menu">
+        <nav className="leftBar_menu">
+          <h4>Blogs on Different Categories</h4>
           <ul style={{ listStyle: "none" }}>
             <li>
-              <Link className="link2" to={"/?category=cars"}>
+              <span className="link2">
                 <h6><IoCarSportSharp style={{ color: "black", fontSize: "30px" }} />CARS</h6>
-              </Link>
-              <Link className="link2" to={"/?category=science"}>
+              </span>
+              <span className="link2">
                 <h6>< MdScience style={{ color: "blue", fontSize: "30px" }} />SCIENCE</h6>
-              </Link>
-              <Link className="link2" to={"/?category=technology"}>
+              </span>
+              <span className="link2">
                 <h6><GrTechnology style={{ color: "red", fontSize: "30px" }} />TECHNOLOGY</h6>
-              </Link>
-              <Link className="link2" to={"/?category=programming"}>
+              </span>
+              <span className="link2">
                 <h6><BiCodeAlt style={{ color: "red", fontSize: "30px" }} />PROGRAMMING</h6>
-              </Link>
-              <Link className="link2" to={"/?category=travel"}>
+              </span>
+              <span className="link2">
                 <h6><BiSolidPlanet style={{ color: "black", fontSize: "30px" }} />TRAVEL</h6>
-              </Link>
-              <Link className="link2" to={"/?category=movies"}>
+              </span>
+              <span className="link2">
                 <h6><BiCameraMovie style={{ color: "black", fontSize: "30px" }} /> Movies</h6>
-              </Link>
+              </span>
             </li>
           </ul>
         </nav>

@@ -12,6 +12,7 @@ import { FcLike } from 'react-icons/fc';
 import { PiHandsClapping } from 'react-icons/pi';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Update from './Update';
 
 const Single = () => {
   const [likes, setLikes] = useState({
@@ -22,6 +23,7 @@ const Single = () => {
   const [post, setPost] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
+  const [toggle, setToggle] = useState(false);
 
   const postId = location?.pathname?.split('/')[2];
   const { currentUser } = useContext(AuthContext);
@@ -71,20 +73,6 @@ const Single = () => {
     }
   };
 
-  const handleEdit = async () => {
-    try {
-      const response = await axios.put(`http://localhost:4000/posts/${postId}`);
-
-      if (response.status === 200) {
-        console.log('Post updated successfully');
-      } else {
-        console.log('Failed to update post');
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const increaseCount = (key) => {
     setLikes((prevLikes) => {
       const newLikes = { ...prevLikes };
@@ -107,6 +95,8 @@ const Single = () => {
     return '';
   };
 
+  const isPostOwner = currentUser && currentUser.id === post.uid;
+
   return (
     <div className="single">
       <div className="content">
@@ -115,14 +105,15 @@ const Single = () => {
             <img src={post.img} alt="Blog" />
             <div className="actions">
               <div className="edit">
-                {currentUser && currentUser.id === post.uid && (
-                  <Link to={`/write?edit=${post.id}`}>
-                    <MdEditNote style={{ fontSize: '25px', cursor: 'pointer' }} onClick={handleEdit} />
-                  </Link>
-                )}
-                {currentUser && currentUser.id === post.uid && (
-                  <MdDeleteSweep style={{ fontSize: '25px', cursor: 'pointer' }} onClick={handleDelete} />
-                )}
+                {
+                  isPostOwner && (
+                    <>
+                      <MdEditNote style={{ fontSize: '25px', cursor: 'pointer' }} onClick={() => setToggle(true)} />
+                      {toggle && <Update post={post} setToggle={setToggle} />}
+                      <MdDeleteSweep style={{ fontSize: '25px', cursor: 'pointer' }} onClick={handleDelete} />
+                    </>
+                  )
+                }
               </div>
               <div className="likes">
                 <AiFillLike style={{ fontSize: '25px' }} onClick={() => increaseCount('like1')} />

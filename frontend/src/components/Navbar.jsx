@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../img/logo2.png";
 import { AuthContext } from "../context/authContext";
@@ -7,14 +7,35 @@ import "../css/Navbar.css";
 const Navbar = () => {
   const { currentUser, logout } = useContext(AuthContext);
   const [showMenu, setShowMenu] = useState(false);
+  const dropdownRef = useRef(null);
+  const profilePicRef = useRef(null);
 
-  const handleMouseEnter = () => {
-    setShowMenu(true);
+  const handleClick = () => {
+    setShowMenu(!showMenu);
   };
 
-  const handleMouseLeave = () => {
+  const handleLinkClick = () => {
     setShowMenu(false);
   };
+
+  const handleOutsideClick = (event) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target) &&
+      profilePicRef.current &&
+      !profilePicRef.current.contains(event.target)
+    ) {
+      setShowMenu(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
 
   return (
     <div className="navbar">
@@ -25,47 +46,54 @@ const Navbar = () => {
               <img src={Logo} alt="logo" />
             </Link>
           </div>
-          <div className="searchBox">
-            <form>
-              <input type="text" placeholder="Search..." aria-label="search" />
-            </form>
-          </div>
         </div>
         <div className="links">
-          <span style={{ textTransform: 'capitalize' }}>Welcome {currentUser?.username}</span>
-          <span className="profile-pic" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <img src="https://avatars.githubusercontent.com/u/105350534?s=400&u=c7ff6e1bce4f9113d125619eb28fa7520a8022e4&v=4" alt="Profile Picture" />
+          <span style={{ textTransform: 'capitalize' }}><em>Welcome </em>: {currentUser?.username}</span>
+          <span ref={profilePicRef} className="profile-pic" onClick={handleClick}>
+            <img src="https://www.webnode.com/blog/wp-content/uploads/2019/04/blog2.png" alt="Profile Picture" />
           </span>
-          <div className={showMenu ? "dropdown-menu" : "dropdown-menu-close"} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <ul className="list">
-              <li>
-                <Link to="/">Dashboard</Link>
-              </li>
-              {currentUser ? (
+          {showMenu && (
+            <div ref={dropdownRef} className="dropdown-menu">
+              <ul className="list">
                 <li>
-                  <Link to="/write">Write</Link>
+                  <Link to="/" onClick={handleLinkClick}>
+                    Dashboard
+                  </Link>
                 </li>
-              ) : (
+                {currentUser ? (
+                  <li>
+                    <Link to="/write" onClick={handleLinkClick}>
+                      Write
+                    </Link>
+                  </li>
+                ) : (
+                  <li>
+                    <Link to="/register" onClick={handleLinkClick}>
+                      Sign Up
+                    </Link>
+                  </li>
+                )}
                 <li>
-                  <Link to="/register">Sign Up</Link>
+                  <Link to="/" onClick={handleLinkClick}>
+                    Reading list
+                  </Link>
                 </li>
-              )}
-              <li>
-                <Link to="/list">Reading list</Link>
-              </li>
-              {currentUser ? (
-                <li>
-                  <button style={{ cursor: "pointer" }} onClick={logout}>
-                    Logout
-                  </button>
-                </li>
-              ) : (
-                <li>
-                  <Link to="/login">Login</Link>
-                </li>
-              )}
-            </ul>
-          </div>
+                {currentUser ? (
+                  <li>
+                    <button style={{ cursor: "pointer" }} onClick={logout}>
+                      Logout
+                    </button>
+                  </li>
+                ) : (
+                  <li>
+                    <Link to="/login" onClick={handleLinkClick}>
+                      Login
+                    </Link>
+                  </li>
+                )}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </div>

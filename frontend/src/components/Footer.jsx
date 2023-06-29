@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import Logo from '../img/logo2.png'
-import { IoLogoTwitter, IoLogoFacebook, IoLogoGithub } from "react-icons/io";
+import { IoLogoTwitter,  IoLogoGithub } from "react-icons/io";
 import { RiInstagramFill } from "react-icons/ri";
+import { FaDev } from "react-icons/fa";
 import '../css/Footer.css'
 
 const Footer = () => {
@@ -10,24 +11,24 @@ const Footer = () => {
     <footer>
       <img src={Logo} alt="my logo" />
       <section className='social_icons' style={{display: "flex", gap: "30px"}}>
-        <a href="/twitter">
+        <a href="https://twitter.com/samkaka_">
           <i>
             <IoLogoTwitter style={{ color: "blue", fontSize: "30px" }} />
           </i>
         </a>
-        <a href="/github">
+        <a href="https://github.com/Leader254">
           <i>
             <IoLogoGithub style={{ color: "black", fontSize: "30px" }} />
           </i>
         </a>
-        <a href="/instagram">
+        <a href="https://instagram.com/i.ts_samh">
           <i>
             <RiInstagramFill style={{ color: "red", fontSize: "30px" }} />
           </i>
         </a>
-        <a href="/facebook">
+        <a href="https://dev.to/samuelwachira">
           <i>
-            <IoLogoFacebook style={{ color: "black", fontSize: "30px" }} />
+            <FaDev style={{ color: "black", fontSize: "30px" }} />
           </i>
         </a>
       </section>
