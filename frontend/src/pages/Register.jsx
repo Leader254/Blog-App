@@ -2,11 +2,15 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from "yup"
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import axios from "axios";
-import './Register.css';
+import '../css/Register.css';
+import Loading from './Loading';
+
 import { toast } from 'react-toastify';
 
 const Register = () => {
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const schema = yup.object().shape({
@@ -30,12 +34,14 @@ const Register = () => {
   })
 
   const onSubmitHandler = async (data) => {
+    setLoading(true);
     try {
       await axios.post("http://localhost:4000/api/auth/register", data);
       toast.success("Congratulations! Please login to your account now", {
         position: toast.POSITION.TOP_CENTER,
         autoclose: 1000
       });
+      setLoading(false);
       navigate("/login");
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error === "User already exists") {
@@ -43,11 +49,13 @@ const Register = () => {
           position: toast.POSITION.TOP_CENTER,
           autoclose: 1000
         });
+        setLoading(false);
       } else {
         toast.error("An error occurred while registering", {
           position: toast.POSITION.TOP_CENTER,
           autoclose: 1000
         });
+        setLoading(false);
       }
       reset();
     }
@@ -56,6 +64,9 @@ const Register = () => {
 
   return (
     <div className='auth'>
+      {
+        loading ? <Loading /> : null
+      }
       <div className="form-container">
         <h1>Register</h1>
         <form action='' onSubmit={handleSubmit(onSubmitHandler)}>

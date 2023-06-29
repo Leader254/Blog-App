@@ -17,11 +17,11 @@ nav ul {
   flex-direction: column;
   padding: 0;
 }
-
-.socials {
-  display: flex;
-  gap: 8px;
-}
 .link2{
   text-decoration: none;
+}
+@media (max-width: 768px) {
+  .leftBar {
+    display: none;
+  }
 }

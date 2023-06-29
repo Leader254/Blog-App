@@ -1,34 +1,39 @@
-.login-container {
+.auth {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    width: 1024px;
+    /* width: 1024px; */
     background-image: url("https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp");
     background-size: cover;
   }
   
-  .login-form {
-    gap: 26px;
+  .auth h1 {
     display: flex;
-    justify-content: inherit;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: rgb(0, 133, 138);
+    margin-bottom: 20px;
+  }
+  
+  .auth form {
+    display: flex;
     flex-direction: column;
     padding: 40px;
-    background-color: rgb(24, 20, 20);
-    height: 340px;
     width: 300px;
     border-radius: 10px;
     background: #e0e0e0;
     box-shadow: 7px 7px 15px #5c5c5c, -7px -7px 15px #ffffff;
   }
   
-  .login-form label {
+  .auth form label {
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 500;
   }
   
-  .login-form > input {
+  .auth form input {
     width: auto;
     outline: none;
     border-radius: 5px;
@@ -37,7 +42,7 @@
     border-bottom: 1px solid gray;
   }
   
-  .login-form button {
+  .auth form button {
     padding: 10px;
     border: none;
     background-color: teal;
@@ -46,13 +51,14 @@
     color: white;
   }
   
-  .login-form p {
+  .auth form p {
     font-size: 12px;
     color: red;
     text-align: center;
   }
   
-  .login-form span {
+  .auth form span {
+    margin-top: 20px;
     font-weight: 600;
     font-size: 15px;
     text-align: center;

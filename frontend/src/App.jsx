@@ -18,12 +18,12 @@ const Layout = () => {
   return (
     <>
 
-    <Navbar />
-    <main>
-    <LeftSideBar />
-    <Outlet />
-    </main>
-    <Footer />
+      <Navbar />
+      <main>
+        <LeftSideBar />
+        <Outlet />
+      </main>
+      <Footer />
     </>
   )
 }
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-function App () {
+function App() {
   return (
     <div className="app">
       <ToastContainer />

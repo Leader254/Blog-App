@@ -1,0 +1,129 @@
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.likes {
+  display: flex;
+  gap: 20px;
+  margin-right: 30px;
+
+}
+
+.likes>span {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #f44336;
+  margin-left: 1px;
+}
+
+.single {
+  display: flex;
+  gap: 50px;
+}
+
+.single>.content {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.single>.content img {
+  padding-top: 70px;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.content {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.content h1 {
+  font-size: 48px;
+  margin-bottom: 0px;
+  color: #333;
+}
+.content p {
+  font-size: 18px;
+  text-align: justify;
+  line-height: 40px;
+}
+
+.post>.img {
+  flex: 2;
+  position: relative;
+}
+
+.post>.img img {
+  height: 100%;
+  width: 100%;
+  max-height: 390px;
+  object-fit: cover;
+}
+
+.edit {
+  display: flex;
+  gap: 5px;
+}
+
+.single .post {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+/* Menu Css */
+.post img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.post h2 {
+  color: #555;
+}
+
+.post button {
+  width: max-content;
+  padding: 7.5px 15px;
+  border: none;
+  cursor: pointer;
+  color: teal;
+  background-color: white;
+  border: 1px solid teal;
+}
+
+.post button:hover {
+  border: 1px solid white;
+  background-color: #b9e7e7;
+  color: black;
+}
+
+/* Media query for menu below 768px */
+@media (max-width: 768px) {
+  .single {
+    flex-direction: column;
+  }
+
+  .single>.content {
+    flex: 1;
+  }
+
+  .single>.content img {
+    padding-top: 0px;
+    height: 100%;
+    width: 100%;
+  }
+
+  .post >.img {
+    flex: 1;
+  }
+
+}

@@ -4,6 +4,15 @@ import jwt from "jsonwebtoken";
 import config from "../db/config.js";
 
 // Register User Logic
+export const loginRequired = (req, res, next) => {
+  if (req.user) {
+    next();
+  } else {
+    return res.status(401).json({ error: "Unauthorized user!" });
+  }
+};
+
+
 export const Register = async (req, res) => {
   const { username, email, password, img } = req.body;
   const hash = bcrypt.hashSync(password, 10);
@@ -56,32 +65,28 @@ export const Login = async (req, res) => {
 
     const user = result.recordset[0];
     if (!user) {
-      return res.status(404).json({ error: "User not found" });
+      return res.status(400).json({ error: "Invalid username or password" });
     } else {
       const validPassword = bcrypt.compareSync(password, user.password);
       if (!validPassword) {
-        return res.status(400).json({ error: "Incorrect password" });
+        return res.status(400).json({ error: "Invalid username or password" });
       } else {
         const token = `JWT ${jwt.sign(
           {
             username: user.username,
             email: user.email,
+            id: user.id,
           },
-          config.jwt_secret,
-          { expiresIn: "1h" }
+          config.jwt_secret
         )}`;
-        // res.cookie("access_token", token, {
-        //     httpOnly: true,
-        // }).status(200).json({ message: "User logged in successfully" });
-        res.status(200).json({
-          message: "User logged in successfully",
-          username: user.username,
-          email: user.email,
-          token: token,
-        });
+        
+        
+        const { id, username, email } = user;
+        return res.json({ id: id, username: username, email: email, token: token });        
       }
     }
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ error: "An error occured while logging in" });
   } finally {
     sql.close();

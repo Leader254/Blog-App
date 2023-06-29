@@ -1,0 +1,63 @@
+/* LandingPage.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+
+}
+
+.landing-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    height: 75vh;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 2px 3px 9px 1px #000;
+    background-image: url("https://images.unsplash.com/photo-1587135991058-8816b028691f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80");
+}
+
+
+main {
+    margin-top: 50px;
+}
+
+.hero-section {
+    text-align: center;
+}
+
+/* .hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+} */
+
+.hero-content h2 {
+    color: #fafafa;
+    font-size: 4rem;
+    margin-top: 0;
+}
+
+.hero-content p {
+    color: #fff;
+    font-size: 25px;
+
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: wheat;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.button{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}

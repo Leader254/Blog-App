@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../img/logo2.png";
 import { AuthContext } from "../context/authContext";
-import "./Navbar.css";
+import "../css/Navbar.css";
 
 const Navbar = () => {
   const { currentUser, logout } = useContext(AuthContext);
@@ -32,7 +32,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="links">
-          <span style={{ textTransform: 'capitalize' }}>{currentUser?.username}</span>
+          <span style={{ textTransform: 'capitalize' }}>Welcome {currentUser?.username}</span>
           <span className="profile-pic" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <img src="https://avatars.githubusercontent.com/u/105350534?s=400&u=c7ff6e1bce4f9113d125619eb28fa7520a8022e4&v=4" alt="Profile Picture" />
           </span>

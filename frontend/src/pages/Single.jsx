@@ -1,121 +1,145 @@
-import { useContext, useEffect, useState } from 'react';
+/* eslint-disable no-unused-vars */
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Menu from '../components/Menu';
-import axios from 'axios';
-import moment from 'moment';
-import './Single.css'
+import '../css/Single.css';
 import { AuthContext } from '../context/authContext';
 import { MdDeleteSweep } from 'react-icons/md';
 import { MdEditNote } from 'react-icons/md';
 import { AiFillLike } from 'react-icons/ai';
 import { FcLike } from 'react-icons/fc';
-// import { FaHandsClapping } from 'react-icons/fa';
 import { PiHandsClapping } from 'react-icons/pi';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Single = () => {
+  const [likes, setLikes] = useState({
+    like1: 0,
+    like2: 0,
+    like3: 0,
+  });
   const [post, setPost] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
 
-  const postId = location?.pathname?.split("/")[2];
+  const postId = location?.pathname?.split('/')[2];
   const { currentUser } = useContext(AuthContext);
 
   const fetchData = async () => {
     try {
       const res = await axios.get(`http://localhost:4000/posts/${postId}`);
       setPost([res.data]);
-      // console.log(res.data)
-
     } catch (err) {
       console.log(err);
     }
   };
 
   useEffect(() => {
-
     fetchData();
   }, []);
 
   const handleDelete = async () => {
     try {
       if (!currentUser || !currentUser.token) {
-        // User is not authenticated, handle accordingly
         console.log('User is not authenticated');
         return;
       }
 
       const config = {
         headers: {
-          Authorization: `Bearer ${currentUser.token}`,
+          Authorization: `${currentUser.token}`,
         },
       };
 
-      const response = await axios.delete(`http://localhost:4000/api/posts/${postId}`, config);
+      const confirmed = window.confirm('Are you sure you want to delete this post?');
+      if (confirmed) {
+        const response = await axios.delete(`http://localhost:4000/posts/${postId}`, config);
 
-      if (response.status === 200) {
-        // Post deleted successfully
-        navigate("/");
-      } else {
-        // Handle unsuccessful delete attempt
-        console.log('Failed to delete post');
+        if (response.status === 200) {
+          toast.success('Blog deleted successfully', {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 2000,
+          });
+          navigate('/');
+        } else {
+          console.log('Failed to delete post');
+        }
       }
     } catch (err) {
       console.log(err);
     }
   };
 
+  const handleEdit = async () => {
+    try {
+      const response = await axios.put(`http://localhost:4000/posts/${postId}`);
+
+      if (response.status === 200) {
+        console.log('Post updated successfully');
+      } else {
+        console.log('Failed to update post');
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const increaseCount = (key) => {
+    setLikes((prevLikes) => {
+      const newLikes = { ...prevLikes };
+      newLikes[key] = prevLikes[key] + 1;
+      localStorage.setItem(key, newLikes[key]);
+      return newLikes;
+    });
+  };
+
+  const extractTimeAndYear = (dateString) => {
+    const regex = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}:\d{2}):\d{2}.\d{3}Z$/;
+    const match = dateString.match(regex);
+    if (match && match.length === 5) {
+      const year = match[1];
+      const month = match[2];
+      const date = match[3];
+      const time = match[4];
+      return `${year}-${month}-${date} ${time}`;
+    }
+    return '';
+  };
+
   return (
-    <div className='single'>
+    <div className="single">
       <div className="content">
-        {/* <img src={post.img} alt="Post" />
-        <div className="user">
-          {/* {post.userImg && <img src={post.userImg} alt="new" />}
-          <div className="info">
-            <span>{post.username}</span>
-            <p>Posted {moment(post.date).fromNow()}</p>
-          </div>
-          {currentUser && currentUser.username === post.username && (
-            <div className="edit">
-              <Link to={`/write?edit=2`}>
-                <img src={Edit} alt="edit" />
-              </Link>
-              <img onClick={handleDelete} src={Delete} alt="edit" />
-            </div>
-          )} 
-        </div>
-        <h1>{post.title}</h1>
-
-        {post.description} */}
-        {
-          post.map((post, index) => (
-            <div className="post" key={index}>
-              <img src={post.img} />
-              <div className="actions">
-                <div className="edit">
-                  <Link to={`/write?edit=2`}>
-                    <MdEditNote style={{ fontSize: "25px" }} />
-                    {/* <img src={Edit} alt="edit" /> */}
+        {post.map((post, index) => (
+          <div className="post" key={index}>
+            <img src={post.img} alt="Blog" />
+            <div className="actions">
+              <div className="edit">
+                {currentUser && currentUser.id === post.uid && (
+                  <Link to={`/write?edit=${post.id}`}>
+                    <MdEditNote style={{ fontSize: '25px', cursor: 'pointer' }} onClick={handleEdit} />
                   </Link>
-                  <MdDeleteSweep style={{ fontSize: "25px", cursor: "pointer" }} onClick={handleDelete} />
-                </div>
-                <div className="likes">
-                  <AiFillLike style={{ fontSize: "25px" }} />
-                  <span>1</span>
-                  <FcLike style={{ fontSize: "25px" }} />
-                  <span>2</span>
-                  <PiHandsClapping style={{ fontSize: "25px" }} />
-                  <span>3</span>
-                </div>
+                )}
+                {currentUser && currentUser.id === post.uid && (
+                  <MdDeleteSweep style={{ fontSize: '25px', cursor: 'pointer' }} onClick={handleDelete} />
+                )}
               </div>
-              <h1>{post.title}</h1>
-              <p>{post.description}</p>
-              <p style={{ fontWeight: "bold" }}>Posted at {moment(post.date).fromNow()}</p>
+              <div className="likes">
+                <AiFillLike style={{ fontSize: '25px' }} onClick={() => increaseCount('like1')} />
+                <span>{likes.like1}</span>
+                <FcLike style={{ fontSize: '25px' }} onClick={() => increaseCount('like2')} />
+                <span>{likes.like2}</span>
+                <PiHandsClapping style={{ fontSize: '25px' }} onClick={() => increaseCount('like3')} />
+                <span>{likes.like3}</span>
+              </div>
             </div>
-          ))
-        }
-
+            <h1>{post.title}</h1>
+            <p>{post.description}</p>
+            <p style={{ fontWeight: 'bold' }}>Posted at {extractTimeAndYear(post.post_date)}</p>
+          </div>
+        ))}
       </div>
-      <Menu cat={post.cat} />
+      <Menu category={post.category} />
     </div>
   );
 };

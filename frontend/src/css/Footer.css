@@ -1,0 +1,16 @@
+/* CSS related to the footer */
+
+footer {
+    margin-top: 100px;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  footer > img {
+    height: 30px;
+    border-radius: 5px;
+  }

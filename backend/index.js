@@ -1,34 +1,13 @@
 import express from "express";
 import config from "./db/config.js";
 import jwt from "jsonwebtoken";
-import multer from 'multer'
 
 import cors from 'cors';
 import authRoutes from './routes2/authRoute.js';
 import postRoutes from './routes2/postRoute.js';
-// import userRoutes from './routes/users.js';
 import cookieParser from 'cookie-parser';
 
-
 const app = express();
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb){
-    cb(null, '../client/public/upload')
-  },
-  filename: function (req, file, cb){
-    cb(null, Date.now()+file.originalname)
-  }
-})
-
-
-const upload = multer({storage})
-
-app.post('/api/upload', upload.single('file'), function(req, res){
-  const file = req.file;
-  res.status(200).json(file.filename)
-})
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -36,10 +15,24 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({
     origin: 'http://localhost:5173'
   }));
+
+// jwt middleware
+app.use((req, res, next) => {
+  if (req.headers && req.headers.authorization && req.headers.authorization.split(" ")[0] === "JWT") {
+    jwt.verify(req.headers.authorization.split(" ")[1], config.jwt_secret, (err, decode) => {
+      if (err) return req.user = undefined;
+      req.user = decode;
+      next();
+    });
+  } else {
+    req.user = undefined;
+    next();
+  }
+});
+
   
 app.use(cookieParser());
 app.use("/api/auth", authRoutes);
-// app.use('/api/users', userRoutes);
 app.use("/posts", postRoutes);
 
 app.listen(config.port, () => {

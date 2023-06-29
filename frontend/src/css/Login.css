@@ -1,0 +1,59 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  /* width: 1024px; */
+  background-image: url("https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp");
+  background-size: cover;
+}
+
+.login-form {
+  gap: 26px;
+  display: flex;
+  justify-content: inherit;
+  flex-direction: column;
+  padding: 40px;
+  background-color: rgb(24, 20, 20);
+  height: 340px;
+  width: 300px;
+  border-radius: 10px;
+  background: #e0e0e0;
+  box-shadow: 7px 7px 15px #5c5c5c, -7px -7px 15px #ffffff;
+}
+
+.login-form label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.login-form > input {
+  width: auto;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid gray;
+}
+
+.login-form button {
+  padding: 10px;
+  border: none;
+  background-color: teal;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.login-form p {
+  font-size: 12px;
+  color: red;
+  text-align: center;
+}
+
+.login-form span {
+  font-weight: 600;
+  font-size: 15px;
+  text-align: center;
+}

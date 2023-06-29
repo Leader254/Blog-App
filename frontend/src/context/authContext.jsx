@@ -20,30 +20,6 @@ export const AuthContextProvider = ({ children }) => {
     await axios.post("http://localhost:4000/api/auth/logout");
     setCurrentUser(null);
   };
-
-  // Clear session on window close
-  // useEffect(() => {
-  //   const handleBeforeUnload = () => {
-  //     localStorage.removeItem('user');
-  //   };
-  
-  //   const handleUnload = () => {
-  //     localStorage.removeItem('user');
-  //   };
-  
-  //   window.addEventListener('beforeunload', handleBeforeUnload);
-  //   window.addEventListener('unload', handleUnload);
-  
-  //   return () => {
-  //     window.removeEventListener('beforeunload', handleBeforeUnload);
-  //     window.removeEventListener('unload', handleUnload);
-  //   };
-  // }, []);
-  
-  
-  
-
-  // Update localStorage on currentUser change
   useEffect(() => {
     localStorage.setItem('user', JSON.stringify(currentUser));
   }, [currentUser]);
